@@ -36,7 +36,7 @@ The mean of the character and factor vector doesn't work.
 
 __Convert variables from one type to another:__
 
-```{r eval = FALSE}
+```{r convert, eval = FALSE}
 #convert ligical vector to numeric
 as.numeric(pull(my_df, vec_logical))
 
@@ -60,8 +60,17 @@ The factor vector was converted to numeric and the mean is `r mean(as.numeric(pu
 data("penguins", package = "palmerpenguins")
 ```
 
-This dataset includes data of `r nrow(penguins)` penguins and these `r ncol(penguins)` variables of them: `r names(penguins)`.
+__Short description:__
 
-Among all the penguins, there are `r nlevels(pull(penguins, names(penguins[1])))` kinds of `r names(penguins[1])`: `r levels(pull(penguins, names(penguins[1])))`, coming from `r nlevels(pull(penguins, names(penguins[2])))` different `r names(penguins[2])`: `r levels(pull(penguins, names(penguins[2])))`.
+This dataset includes data of `r nrow(penguins)` penguins and `r ncol(penguins)` variables of them: `r names(penguins)`.
+
+Among all the penguins, there are `r nlevels(pull(penguins, names(penguins[1])))` kinds of `r names(penguins[1])`: `r levels(pull(penguins, names(penguins[1])))`, coming from `r nlevels(pull(penguins, names(penguins[2])))` different `r names(penguins[2])`s: `r levels(pull(penguins, names(penguins[2])))`.
 
 The mean of `r names(penguins[5])` is `r mean(pull(penguins, names(penguins[5])), na.rm = TRUE)`.
+
+__Make a scatter plot:__
+
+```{r scatter_plot, warning = FALSE}
+#make a scatter plot of flipper_length_mm (y) vs bill_length_mm (x)
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+```
