@@ -11,7 +11,7 @@ library(tidyverse)
 
 # Problem 1
 
-__create a data frame comprised of 4 vectors:__
+__Create a data frame comprised of 4 vectors:__
 
 ```{r problem_1}
 set.seed(1)
@@ -74,3 +74,9 @@ __Make a scatter plot:__
 #make a scatter plot of flipper_length_mm (y) vs bill_length_mm (x)
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 ```
+
+```{r save_pdf, eval = FALSE}
+#save my scatter plot
+ggsave("penguins_scatter_plot.pdf", height = 4, width = 6)
+```
+
