@@ -1,0 +1,54 @@
+---
+title: "p8105_hw1_jz3425"
+author: "Jibei Zheng"
+date: 9/25/2021
+output: github_document
+---
+
+```{r, echo = FALSE, message = FALSE}
+library(tidyverse)
+```
+
+# Problem 1
+
+__create a data frame comprised of 4 vectors:__
+
+```{r data_frame}
+set.seed(1)
+
+#create a data frame comprised of 4 vectors
+my_df = tibble(
+  vec_numeric = rnorm(10),
+  vec_logical = vec_numeric > 0,
+  vec_char = c(letters[1:10]),
+  vec_factor = factor(c(rep("R", 3), rep("G", 3), rep("B", 4)))
+)
+
+my_df
+```
+
+The mean of the numeric vector is `r mean(pull(my_df, vec_numeric))`.
+
+The mean of the logical vector is `r mean(pull(my_df, vec_logical))`.
+
+The mean of the character and factor vector doesn't work.
+
+
+__Convert variables from one type to another:__
+
+```{r eval = FALSE}
+#convert ligical vector to numeric
+as.numeric(pull(my_df, vec_logical))
+
+#convert character vector to numeric, but this doesn't work
+as.numeric(pull(my_df, vec_char))
+
+#convert factor vector to numeric
+as.numeric(pull(my_df, vec_factor))
+```
+
+The logical vector is converted to numeric, as TRUE= 1 and FALSE = 0.
+
+The characters cannot be converted, so the mean is not calculable.
+
+The factor vector was converted to numeric and the mean is `r mean(as.numeric(pull(my_df, vec_factor)))`, however it means nothing.
