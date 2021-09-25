@@ -13,7 +13,7 @@ library(tidyverse)
 
 __create a data frame comprised of 4 vectors:__
 
-```{r data_frame}
+```{r problem_1}
 set.seed(1)
 
 #create a data frame comprised of 4 vectors
@@ -52,3 +52,16 @@ The logical vector is converted to numeric, as TRUE= 1 and FALSE = 0.
 The characters cannot be converted, so the mean is not calculable.
 
 The factor vector was converted to numeric and the mean is `r mean(as.numeric(pull(my_df, vec_factor)))`, however it means nothing.
+
+# Problem 2
+
+```{r problem_2}
+#load the "penguins" dataset
+data("penguins", package = "palmerpenguins")
+```
+
+This dataset includes data of `r nrow(penguins)` penguins and these `r ncol(penguins)` variables of them: `r names(penguins)`.
+
+Among all the penguins, there are `r nlevels(pull(penguins, names(penguins[1])))` kinds of `r names(penguins[1])`: `r levels(pull(penguins, names(penguins[1])))`, coming from `r nlevels(pull(penguins, names(penguins[2])))` different `r names(penguins[2])`: `r levels(pull(penguins, names(penguins[2])))`.
+
+The mean of `r names(penguins[5])` is `r mean(pull(penguins, names(penguins[5])), na.rm = TRUE)`.
